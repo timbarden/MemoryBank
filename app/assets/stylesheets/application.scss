@@ -1,0 +1,92 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "_resets";
+
+:root {
+    --pri: #2d1e3e;
+    --sec: #2d8772;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button,
+input {
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+}
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+label {
+    display: block;
+}
+input[type="text"],
+textarea {
+    width: 100%;
+    max-width: 600px;
+}
+.form__item {
+    margin: .85em 0;
+    label {
+        margin: .35em 0;
+    }
+    &[data-type="checkbox"]{
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        input {
+            width: 1.35em;
+            height: 1.35em;
+            cursor: pointer;
+            margin-right: .5em;
+        }
+    }
+}
+ 
+ 
+///////////////////////
+// APP / BODY
+///////////////////////
+.app {
+    padding: 5vw 8vw;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    min-height: 100vh;
+    border-top: 1em solid var(--sec);
+    font-family: 'Rye', sans-serif;
+    background: #222;
+    color: #666;
+    font-size: 1.125em;
+    line-height: 1.6;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #FFF;
+}
+a {
+    color: inherit;
+    text-decoration-style: dotted;
+    &:hover {
+        color: #FFF;
+    }
+}
