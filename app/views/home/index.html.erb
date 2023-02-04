@@ -1,5 +1,4 @@
  <div class="admin">
-    <div class="btns">
     <% if user_signed_in? %>
         <span>Hello <%= current_user.name %>!</span>
         <%= button_to "My Account", edit_user_registration_path, method: :get %>
@@ -8,17 +7,48 @@
         <%= button_to "Sign up", new_user_registration_path, method: :get %>
         <%= button_to "Log in", new_user_session_path, method: :get %>
     <% end %>
-    </div>
+
+    <p>
+    <% if user_signed_in? %>
+        logged in
+        <%= button_to "New entry", new_entry_path, method: :get %>
+    <% else %>
+        logged out
+    <% end %>
+    </p>
 </div>
+<hr>
 
-<% if user_signed_in? %>
-    logged in
-    <%= button_to "New entry", new_entry_path, method: :get %>
-<% else %>
-    logged out
-<% end %>
+<main class="main">
 
-<h1>Memory Bank</h1>
-<p>Search your bank of previous issues!</p>
-<%= link_to "View all entries", entries_path %>
+    <div class="main__form">
+        <span class="main__form__icon material-symbols-outlined">cognition</span>
+        <h1>Memory Bank</h1>
+        <%= form_tag root_path, :method => "get" do %>
+            <%= label_tag(:search, "Search your bank of previous issues!") %>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag("Search", :name => nil) %>
+        <% end %>
+        <%= link_to "Browse entries", entries_path %>
+    </div>
+
+    <br>
+    <hr>
+
+    <% if params[:search] != "" %>
+        <h3>Results for '<%= params[:search] %>'</h3>
+        <% if @entries %>
+            <p><%= @entries.length %> result(s)</p>
+            <ul>
+                <% @entries.each do |entry| %>
+                    <li>
+                        <%= link_to entry.question, entry_path(entry) %>
+                    </li>
+                <% end %>
+            </ul>
+        <% else %>
+            <p>No results found.</p>
+        <% end %>
+    <% end %>
+</main>
 

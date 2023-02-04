@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
   # GET /entries or /entries.json
   def index
     @entries = Entry.all
+    #@entries = Entry.search(params[:search])
   end
 
   # GET /entries/1 or /entries/1.json
@@ -65,6 +66,6 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:question, :answer)
+      params.require(:entry).permit(:id, :question, :answer, :search)
     end
 end

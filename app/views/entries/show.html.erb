@@ -2,9 +2,11 @@
 
 <%= render @entry %>
 
+<% if user_signed_in? %>
 <div>
   <%= link_to "Edit this entry", edit_entry_path(@entry) %> |
   <%= link_to "Back to entries", entries_path %>
 
   <%= button_to "Destroy this entry", @entry, method: :delete %>
 </div>
+<% end %>
