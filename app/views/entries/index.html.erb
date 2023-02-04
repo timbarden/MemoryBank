@@ -6,7 +6,7 @@
   <ul>
     <% @entries.each do |entry| %>
       <li>
-        <%= link_to entry.question, entry %>
+        <%= link_to entry.question + " (" + entry.updated_at.strftime("%b %-d, %Y") + ")", entry %>
       </li>
     <% end %>
   </ul>

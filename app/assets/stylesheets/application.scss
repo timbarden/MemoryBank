@@ -16,8 +16,7 @@
 @import "_resets";
 
 :root {
-    --pri: #2d1e3e;
-    --sec: #2d8772;
+    --pri: #2d8772;
 }
 
 * {
@@ -73,17 +72,21 @@ body {
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     min-height: 100vh;
-    border-top: 1em solid var(--sec);
+    border-top: 1em solid var(--pri);
     background: #222;
     font-family: "Nunito", sans-serif;
     color: #666;
     font-size: 1.125em;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Rye', sans-serif;
+    font-family: 'Gugi', sans-serif;
     color: #FFF;
     margin: 0;
+    letter-spacing: .05em;
+}
+h1 {
+    font-size: 2.25em;
 }
 a {
     color: inherit;
@@ -92,7 +95,6 @@ a {
         color: #FFF;
     }
 }
-
 
 .admin {
     display: flex;
@@ -108,7 +110,8 @@ a {
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
-    'opsz' 48
+    'opsz' 48;
+    color: var(--pri);
 }
 
 .main__form {
