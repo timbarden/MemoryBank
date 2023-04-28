@@ -1,4 +1,5 @@
 class Entry < ApplicationRecord
+    belongs_to :user
     validates :question, presence: true
 
     def self.search(search)

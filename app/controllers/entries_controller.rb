@@ -21,7 +21,7 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry = Entry.new(entry_params.merge(user: current_user))
 
     respond_to do |format|
       if @entry.save
@@ -37,7 +37,7 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
     respond_to do |format|
-      if @entry.update(entry_params)
+      if @entry.update(entry_params.merge(user: current_user))
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
@@ -65,6 +65,6 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:id, :question, :answer, :search)
+      params.require(:entry).permit(:id, :question, :answer, :search, :user_id)
     end
 end

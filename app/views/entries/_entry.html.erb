@@ -1,4 +1,7 @@
-<div id="<%= dom_id entry %>">
+<div class="entry" id="<%= dom_id entry %>">
     <h2><%= entry.question %></h2>
-    <p><%= entry.answer %></p>
+    <p class="entry__subtitle"><small>last updated by <%= entry.user.name %> on <%= entry.updated_at.strftime("%b %-d, %Y") %></small></p>
+    <div class="entry__answer">
+        <p><%= entry.answer %></p>
+    </div>
 </div>

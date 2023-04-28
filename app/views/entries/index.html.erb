@@ -2,11 +2,11 @@
 
 <h1>Entries</h1>
 
-<div id="entries">
+<div class="entries">
   <ul>
     <% @entries.each do |entry| %>
       <li>
-        <%= link_to entry.question + " (" + entry.updated_at.strftime("%b %-d, %Y") + ")", entry %>
+        <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
       </li>
     <% end %>
   </ul>

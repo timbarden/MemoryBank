@@ -30,19 +30,20 @@
     </div>
 
     <br>
-    <hr>
 
     <% if params[:search] != "" and !params[:search].nil? %>
         <h3>Results for '<%= params[:search] %>'</h3>
         <% if @entries %>
             <p><%= @entries.length %> result(s)</p>
-            <ul>
-                <% @entries.each do |entry| %>
-                    <li>
-                        <%= link_to entry.question + " (" + entry.updated_at.strftime("%b %-d, %Y") + ")", entry %>
-                    </li>
-                <% end %>
-            </ul>
+            <div class="entries">
+                <ul>
+                    <% @entries.each do |entry| %>
+                        <li>
+                            <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
         <% else %>
             <p>No results found.</p>
         <% end %>
