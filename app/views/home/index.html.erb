@@ -1,52 +1,28 @@
- <div class="admin">
-    <% if user_signed_in? %>
-        <%= button_to "My Account", edit_user_registration_path, method: :get %>
-        <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-        <%= button_to "New entry", new_entry_path, method: :get %>
-    <% else %>
-        <%= button_to "Sign up", new_user_registration_path, method: :get %>
-        <%= button_to "Log in", new_user_session_path, method: :get %>
+<div class="main__form">
+    <%= form_tag root_path, :method => "get" do %>
+        <%= label_tag(:search, "Search your bank of previous issues!") %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag("Search", :name => nil) %>
     <% end %>
-
-    <p>
-    <% if user_signed_in? %>
-        Hello <%= current_user.name %>!
-    <% end %>
-    </p>
+    <%= link_to "Browse entries", entries_path %>
 </div>
-<hr>
 
-<main class="main">
+<br>
 
-    <div class="main__form">
-        <span class="main__form__icon material-symbols-outlined">cognition</span>
-        <h1>Memory Bank</h1>
-        <%= form_tag root_path, :method => "get" do %>
-            <%= label_tag(:search, "Search your bank of previous issues!") %>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag("Search", :name => nil) %>
-        <% end %>
-        <%= link_to "Browse entries", entries_path %>
-    </div>
-
-    <br>
-
-    <% if params[:search] != "" and !params[:search].nil? %>
-        <h3>Results for '<%= params[:search] %>'</h3>
-        <% if @entries %>
-            <p><%= @entries.length %> result(s)</p>
-            <div class="entries">
-                <ul>
-                    <% @entries.each do |entry| %>
-                        <li>
-                            <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
-                        </li>
-                    <% end %>
-                </ul>
-            </div>
-        <% else %>
-            <p>No results found.</p>
-        <% end %>
+<% if params[:search] != "" and !params[:search].nil? %>
+    <h3>Results for '<%= params[:search] %>'</h3>
+    <% if @entries %>
+        <p><%= @entries.length %> result(s)</p>
+        <div class="entries">
+            <ul>
+                <% @entries.each do |entry| %>
+                    <li>
+                        <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    <% else %>
+        <p>No results found.</p>
     <% end %>
-</main>
-
+<% end %>

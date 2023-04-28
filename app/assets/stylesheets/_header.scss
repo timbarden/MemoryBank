@@ -1,0 +1,15 @@
+.header {
+    border-top: 1em solid var(--pri);
+    padding: 1em 8vw;
+    &__btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    &__main {
+        text-align: center;
+        &__icon {
+            font-size: 4em !important;
+        }
+    }
+}

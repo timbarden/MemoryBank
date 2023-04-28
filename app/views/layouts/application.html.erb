@@ -17,7 +17,11 @@
   </head>
   <body>
     <div class="app">
-      <%= yield %>
+      <%= render template: "/layouts/adminbar" %>
+      <%= render template: "/layouts/header" %>
+      <main class="main">
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>

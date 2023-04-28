@@ -1,0 +1,21 @@
+.adminbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    padding: .25em 8vw;
+    background: var(--pri);
+    &:before {
+        position: absolute;
+        inset: 0;
+        content: '';
+        z-index: 0;
+        background: rgba(#000, .5);
+    }
+    > * {
+        z-index: 1;
+    }
+    p {
+        margin-left: auto;
+    }
+}
