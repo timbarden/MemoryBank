@@ -17,6 +17,8 @@
 
 @import "_admin";
 @import "_header";
+@import "_entries";
+@import "_pagy";
 
 :root {
     --pri: #2d8772;
@@ -108,45 +110,4 @@ a {
     'GRAD' 0,
     'opsz' 48;
     color: var(--pri);
-}
-
-.entries {
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    li {
-        border-top: 2px solid #333;
-        &:last-child {
-            border-bottom: 2px solid #333;
-        }
-        a {
-            display: block;
-            padding: 1em 0;
-            text-decoration: none;
-        }
-        p {
-            margin: 0;
-            &:nth-child(2){
-                margin-top: -.35em;
-                small {
-                    color: #666;
-                }
-            }
-        }
-    }
-}
-.entry {
-    &__subtitle {
-        margin-top: 0;
-        color: #888;
-    }
-    &__answer {
-        color: #FFF;
-        padding: 1em 2em;
-        margin: 1em 0;
-        border: 1px solid var(--pri);
-        border-left: 10px solid var(--pri);
-    }
 }

@@ -1,0 +1,30 @@
+.pagination-wrapper {
+	font-size: .85em;
+	.pagy-info {
+		display: block;
+		margin-bottom: .5em;
+	}
+	.page {
+		min-width: 30px;
+		height: 30px;
+		display: inline-flex;
+		border: 1px solid rgba(#FFF, .2);
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		a {
+			padding: 0 10px;
+			min-width: inherit;
+		}
+		&.active {
+			border-color: #FFF;
+		}
+		&.disabled {
+			opacity: .2;
+		}
+		&.prev,
+		&.next {
+			min-width: 70px;
+		}
+	}
+}
