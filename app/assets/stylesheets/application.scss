@@ -65,12 +65,18 @@ textarea {
     }
 }
 .main {
-    padding: 1em 8vw;
+    padding: 4vw 8vw;
+    min-height: calc(100vh - 5em);
+    background: linear-gradient(#222, rgba(255, 255, 255, .04));
     &__form {
         text-align: center;
     }
 }
- 
+.app--inner {
+    .main {
+        background: rgba(255, 255, 255, .04);
+    }
+}
  
 ///////////////////////
 // APP / BODY
