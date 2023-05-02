@@ -78,4 +78,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  # https://www.youtube.com/watch?v=2jX-FLcznDE&list=PLS6F722u-R6Ik3fbeLXbSclWkT6Qsp9ng&ab_channel=CJAvilla
+  gem "rspec-rails"
+  gem 'simplecov', require: false
 end
