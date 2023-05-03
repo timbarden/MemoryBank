@@ -57,6 +57,10 @@ gem "pagy", "~> 6.0"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # https://www.youtube.com/watch?v=2jX-FLcznDE&list=PLS6F722u-R6Ik3fbeLXbSclWkT6Qsp9ng&ab_channel=CJAvilla
+  gem "rspec-rails"
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -78,8 +82,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-
-  # https://www.youtube.com/watch?v=2jX-FLcznDE&list=PLS6F722u-R6Ik3fbeLXbSclWkT6Qsp9ng&ab_channel=CJAvilla
-  gem "rspec-rails"
-  gem 'simplecov', require: false
 end
