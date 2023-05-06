@@ -1,13 +1,15 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+    before do
+        @user = create(:user)
+    end
+
     it "has an email address" do
-        user = create(:user)
-        expect(user.email).to_not eq('')
+        expect(@user.email).to_not eq('')
     end
     
     it "has a password" do
-        user = create(:user)
-        expect(user.password).to_not eq('')
+        expect(@user.password).to_not eq('')
     end
 end
