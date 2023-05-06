@@ -22,6 +22,7 @@
                 <% end %>
             </ul>
         </div>
+        <%= render 'shared/pagination', pagy: @pagy %>
     <% else %>
         <p>No results found.</p>
     <% end %>
