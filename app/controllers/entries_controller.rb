@@ -3,8 +3,7 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @entries = Entry.all.order("created_at DESC")
-    @pagy, @entries = pagy(Entry.all, items: 10)
+    @pagy, @entries = pagy(Entry.all.order("updated_at DESC"), items: 10)
   end
 
   # GET /entries/1 or /entries/1.json
