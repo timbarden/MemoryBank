@@ -51,6 +51,9 @@ gem "devise"
 # Pagination
 gem "pagy", "~> 6.0"
 
+# monitor directories for changes
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
