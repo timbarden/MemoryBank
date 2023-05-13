@@ -3,6 +3,23 @@
 <h1>Entries</h1>
 
 <div class="entries">
+
+  <div class="tagcloud">
+    <ul>
+      <% Tag.all.each do |tag| %>
+        <%
+        strTagClass = ""
+        if params[:tag] == tag.name
+          strTagClass = "active"
+        end 
+        %>
+        <li>
+          <a href="?tag=<%= tag.name %>" class="<%= strTagClass %>"><%= tag.name %></a>
+        </li>
+      <% end %>
+      </ul>
+  </div>
+
   <% if params[:tag] %>
     <h3>Tagged with '<%= params[:tag] %>'</h3>
   <% end %>

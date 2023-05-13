@@ -1,0 +1,28 @@
+.tagcloud {
+    font-size: .9rem;
+    border-bottom: 1px solid var(--pri);
+    margin-bottom: 1.5em;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin: .75em -.25em;
+    }
+    li {
+        border: none;
+        margin: .25em;
+        a {
+            display: block;
+            padding: .25em .5em;
+            border-radius: .5em;
+            border: 1px solid rgba(#FFF, .1);
+            &:hover:not(.active) {
+                background: rgba(#FFF, .05);
+            }
+            &.active {
+                color: #FFF;
+                background: rgba(#FFF, .07);
+                border-color: var(--pri);
+            }
+        }
+    } 
+}
