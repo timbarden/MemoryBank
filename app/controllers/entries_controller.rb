@@ -3,11 +3,19 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @pagy, @entries = pagy(Entry.all.order("updated_at DESC"), items: 10)
+    if params[:tag].nil?
+      @entries = Entry.all.order("updated_at DESC")
+    else
+      @entries = Entry.tagged_with(params[:tag])
+    end
+    if !@entries.nil?
+      @pagy, @entries = pagy(@entries.order("updated_at DESC"), items: 10)
+    end
   end
 
   # GET /entries/1 or /entries/1.json
   def show
+    @entry = Entry.find(params[:id])
   end
 
   # GET /entries/new
@@ -65,6 +73,6 @@ class EntriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:id, :question, :answer, :search, :user_id)
+      params.require(:entry).permit(:question, :answer, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

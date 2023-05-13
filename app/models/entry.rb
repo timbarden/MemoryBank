@@ -1,6 +1,16 @@
 class Entry < ApplicationRecord
     belongs_to :user
+    has_many :taggings
+    has_many :tags, through: :taggings
+
     validates :question, presence: true
+
+    def self.tagged_with(name)
+        tags = Tag.find_by(name: name)
+        if !tags.nil?
+            tags.entries
+        end
+    end
 
     def self.search(search)
         if search
