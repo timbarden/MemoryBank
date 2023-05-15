@@ -4,4 +4,13 @@
     <div class="entry__answer">
         <p><%= entry.answer %></p>
     </div>
+    <div class="tagcloud">
+        <ul>
+            <% entry.tags.each do |t| %>
+                <li>
+                    <span><%= t.name %></span>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </div>

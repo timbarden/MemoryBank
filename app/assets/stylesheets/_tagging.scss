@@ -11,13 +11,15 @@
     li {
         border: none;
         margin: .25em;
-        a {
+        > * {
             display: block;
             padding: .25em .5em;
             border-radius: .5em;
             position: relative;
             border: 1px solid rgba(#FFF, .1);
             text-decoration: none;
+        }
+        a {
             &:hover:not(.active) {
                 background: rgba(#FFF, .05);
             }
