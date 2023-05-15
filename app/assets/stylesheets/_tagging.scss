@@ -1,11 +1,12 @@
 .tagcloud {
     font-size: .9rem;
-    border-bottom: 1px solid var(--pri);
     margin-bottom: 1.5em;
     ul {
         display: flex;
         flex-wrap: wrap;
-        margin: .75em -.25em;
+        list-style: none;
+        padding: 0;
+        margin: 0 -.25em;
     }
     li {
         border: none;
@@ -15,6 +16,7 @@
             padding: .25em .5em;
             border-radius: .5em;
             border: 1px solid rgba(#FFF, .1);
+            text-decoration: none;
             &:hover:not(.active) {
                 background: rgba(#FFF, .05);
             }

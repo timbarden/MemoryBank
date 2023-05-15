@@ -1,9 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Entries</h1>
+<div class="content">
+  <h1>Entries</h1>
+  <div class="entries">
+    <% if params[:tag] %>
+      <h3>Tagged with '<%= params[:tag] %>'</h3>
+    <% end %>
+    <% if @entries.nil? %>
+      <p>No items are assigned to this tag.</p>
+    <% else %>
+      <ul>
+        <% @entries.each do |entry| %>
+          <li>
+            <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
+          </li>
+        <% end %>
+      </ul>
+      <%= render 'shared/pagination', pagy: @pagy %>
+    <% end %>
+  </div>
 
-<div class="entries">
+  <% if user_signed_in? %>
+    <%= link_to "New entry", new_entry_path %>
+  <% end %>
+</div>
 
+<div class="sidebar">
   <div class="tagcloud">
     <ul>
       <% Tag.all.each do |tag| %>
@@ -19,24 +41,4 @@
       <% end %>
       </ul>
   </div>
-
-  <% if params[:tag] %>
-    <h3>Tagged with '<%= params[:tag] %>'</h3>
-  <% end %>
-  <% if @entries.nil? %>
-    <p>No items are assigned to this tag.</p>
-  <% else %>
-    <ul>
-      <% @entries.each do |entry| %>
-        <li>
-          <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
-        </li>
-      <% end %>
-    </ul>
-    <%= render 'shared/pagination', pagy: @pagy %>
-  <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <%= link_to "New entry", new_entry_path %>
-<% end %>
