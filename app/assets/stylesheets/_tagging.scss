@@ -15,6 +15,7 @@
             display: block;
             padding: .25em .5em;
             border-radius: .5em;
+            position: relative;
             border: 1px solid rgba(#FFF, .1);
             text-decoration: none;
             &:hover:not(.active) {
@@ -22,8 +23,15 @@
             }
             &.active {
                 color: #FFF;
-                background: rgba(#FFF, .07);
+                background: transparent;
                 border-color: var(--pri);
+                &:before {
+                    position: absolute;
+                    inset: 0;
+                    content: '';
+                    background: var(--pri);
+                    opacity: .2;
+                }
             }
         }
     } 

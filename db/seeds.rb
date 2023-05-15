@@ -15,5 +15,6 @@ Tag.create(name: "Databases")
 
 Tagging.create(tag_id: 1, entry_id: 1)
 Tagging.create(tag_id: 1, entry_id: 4)
+Tagging.create(tag_id: 2, entry_id: 4)
 Tagging.create(tag_id: 2, entry_id: 2)
 Tagging.create(tag_id: 3, entry_id: 3)
