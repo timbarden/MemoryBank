@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
 
-  # GET /entries or /entries.json
+  # GET /entries
   def index
     if params[:tag].nil?
       @entries = Entry.all.order("updated_at DESC")
@@ -14,7 +14,7 @@ class EntriesController < ApplicationController
     @tagcloud = true
   end
 
-  # GET /entries/1 or /entries/1.json
+  # GET /entries/1
   def show
     @entry = Entry.find(params[:id])
   end
@@ -28,7 +28,7 @@ class EntriesController < ApplicationController
   def edit
   end
 
-  # POST /entries or /entries.json
+  # POST /entries
   def create
     @entry = Entry.new(entry_params.except(:tags).merge(user: current_user))
     # params from the form
@@ -37,35 +37,30 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully created." }
-        format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /entries/1 or /entries/1.json
+  # PATCH/PUT /entries/1
   def update
     rebuild_taggings(@entry, params[:entry][:tags])
     respond_to do |format|
       if @entry.update(entry_params.except(:tags).merge(user: current_user))
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
-        format.json { render :show, status: :ok, location: @entry }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /entries/1 or /entries/1.json
+  # DELETE /entries/1
   def destroy
     @entry.destroy
 
     respond_to do |format|
       format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
