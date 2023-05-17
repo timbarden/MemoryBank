@@ -3,7 +3,6 @@ class EntriesController < ApplicationController
 
   # GET /entries or /entries.json
   def index
-    @tagcloud = true
     if params[:tag].nil?
       @entries = Entry.all.order("updated_at DESC")
     else
@@ -12,6 +11,7 @@ class EntriesController < ApplicationController
     if !@entries.nil?
       @pagy, @entries = pagy(@entries.order("updated_at DESC"), items: 10)
     end
+    @tagcloud = true
   end
 
   # GET /entries/1 or /entries/1.json
@@ -73,7 +73,6 @@ class EntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = Entry.find(params[:id])
-      @tagcloud = true
     end
 
     def rebuild_taggings(entry, tags)
