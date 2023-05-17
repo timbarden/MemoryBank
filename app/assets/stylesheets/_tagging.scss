@@ -1,0 +1,40 @@
+.tagcloud {
+    font-size: .9rem;
+    margin-bottom: 1.5em;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0 -.25em;
+    }
+    li {
+        border: none;
+        margin: .25em;
+        > * {
+            display: block;
+            padding: .25em .5em;
+            border-radius: .5em;
+            position: relative;
+            border: 1px solid rgba(#FFF, .1);
+            text-decoration: none;
+        }
+        a {
+            &:hover:not(.active) {
+                background: rgba(#FFF, .05);
+            }
+            &.active {
+                color: #FFF;
+                background: transparent;
+                border-color: var(--pri);
+                &:before {
+                    position: absolute;
+                    inset: 0;
+                    content: '';
+                    background: var(--pri);
+                    opacity: .2;
+                }
+            }
+        }
+    } 
+}
