@@ -21,6 +21,12 @@
     <%= form.text_area :answer, rows: 10 %>
   </div>
 
+  <!-- helpful video: https://www.youtube.com/watch?v=03enr4NNgLI&ab_channel=Deanin -->
+  <div class="form__item">
+    <%= form.label "Tags" %>
+    <%= form.text_field :tags, value: entry.tags.map(&:name).join(",") %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

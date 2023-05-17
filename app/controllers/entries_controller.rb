@@ -29,7 +29,9 @@ class EntriesController < ApplicationController
 
   # POST /entries or /entries.json
   def create
-    @entry = Entry.new(entry_params.merge(user: current_user))
+    @entry = Entry.new(entry_params.except(:tags).merge(user: current_user))
+    # params from the form
+    rebuild_taggings(@entry, params[:entry][:tags])
 
     respond_to do |format|
       if @entry.save
@@ -44,8 +46,9 @@ class EntriesController < ApplicationController
 
   # PATCH/PUT /entries/1 or /entries/1.json
   def update
+    rebuild_taggings(@entry, params[:entry][:tags])
     respond_to do |format|
-      if @entry.update(entry_params.merge(user: current_user))
+      if @entry.update(entry_params.except(:tags).merge(user: current_user))
         format.html { redirect_to entry_url(@entry), notice: "Entry was successfully updated." }
         format.json { render :show, status: :ok, location: @entry }
       else
@@ -71,8 +74,16 @@ class EntriesController < ApplicationController
       @entry = Entry.find(params[:id])
     end
 
+    def rebuild_taggings(entry, tags)
+      entry.taggings.destroy_all
+      tags = tags.strip.split(',')
+      tags.each do |tag|
+        entry.tags << Tag.find_or_create_by(name: tag)
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def entry_params
-      params.require(:entry).permit(:question, :answer)
+      params.require(:entry).permit(:question, :answer, :tags)
     end
 end
