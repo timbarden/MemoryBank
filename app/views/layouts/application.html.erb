@@ -20,7 +20,10 @@
       <%= render template: "/layouts/adminbar" %>
       <%= render template: "/layouts/header" %>
       <main class="main">
-        <%= yield %>
+        <div class="content">
+          <%= yield %>
+        </div>
+        <%= render template: "/layouts/sidebar" if !homepage %>
       </main>
     </div>
   </body>
