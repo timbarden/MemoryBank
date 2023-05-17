@@ -1,23 +1,5 @@
 <div class="sidebar">
 
-    <% if @tagcloud %>
-    <div class="tagcloud">
-        <h4>Search by Tag:</h4>
-        <hr>
-        <ul>
-            <% Tag.all.each do |tag| %>
-            <%
-            strTagClass = ""
-            if params[:tag] == tag.name
-                strTagClass = "active"
-            end 
-            %>
-            <li>
-                <a href="?tag=<%= tag.name %>" class="<%= strTagClass %>"><%= tag.name %></a>
-            </li>
-            <% end %>
-        </ul>
-    </div>
-    <% end %>
+    <%= render template: "tags/tagcloud" if @tagcloud %>
     
 </div>
