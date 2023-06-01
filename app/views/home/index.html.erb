@@ -12,12 +12,24 @@
 <% if params[:search] != "" and !params[:search].nil? %>
     <h3>Results for '<%= params[:search] %>'</h3>
     <% if @entries %>
-        <p><%= @entries.length %> result(s)</p>
+        <p><%= @entries.length %> result<% if @entries.length > 1 %>s<% end %></p>
         <div class="entries">
             <ul>
                 <% @entries.each do |entry| %>
-                    <li>
-                        <%= link_to raw("<p>") + entry.question + raw("</p><p><small>last updated by ") + entry.user.name + " on " + entry.updated_at.strftime("%b %-d, %Y") +  raw("</small></p>"), entry %>
+                    <li class="entries__item">
+                        <% strEntryTags = '' %>
+                        <% if entry.tags.count > 0
+                            strEntryTags = raw("<p class='entries__item__tags'>")
+                            entry.tags.each do |t| %>
+                            <% strEntryTags += raw(t.name + '<span>|</span>') %>
+                            <% end
+                            strEntryTags += raw("</p>")
+                        end %>
+                        <%= link_to entry do %>
+                            <p><%= entry.question %></p>
+                            <p class="entries__item__info"><small>last updated by <%= entry.user.name %> on <%= entry.updated_at.strftime("%b %-d, %Y") %></small></p>
+                            <%= strEntryTags %>
+                        <% end %>
                     </li>
                 <% end %>
             </ul>

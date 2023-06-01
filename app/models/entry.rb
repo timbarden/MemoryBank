@@ -6,18 +6,15 @@ class Entry < ApplicationRecord
     validates :question, presence: true
 
     def self.tagged_with(name)
-        tags = Tag.find_by(name: name)
-        if !tags.nil?
-            tags.entries
-        end
+        return Entry.joins(:tags).where("lower(name) = ?", name.downcase)
     end
 
     def self.search(search)
         if search
-            entry_search = Entry.where("lower(question) LIKE ?", "%#{search}%")
-            if entry_search
-                self.where(id: entry_search).order("created_at DESC")
-            end
+            search = search.downcase
+            entries_tagged = Entry.tagged_with(search)
+            entries_contain = Entry.where("lower(question) LIKE ?", "%#{search}%").or(Entry.where("lower(answer) LIKE ?", "%#{search}%"))
+            return entries_tagged + entries_contain
         end
     end
 end
