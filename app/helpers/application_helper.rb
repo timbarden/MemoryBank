@@ -4,4 +4,5 @@ module ApplicationHelper
     def homepage
         return current_page?(root_url)
     end
+
 end

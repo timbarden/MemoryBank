@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :set_breadcrumbs
 
   # GET /entries
   def index
@@ -12,11 +13,14 @@ class EntriesController < ApplicationController
       @pagy, @entries = pagy(@entries.order("updated_at DESC"), items: 10)
     end
     @tagcloud = true
+    add_breadcrumb("Entries", entries_path)
   end
 
   # GET /entries/1
   def show
     @entry = Entry.find(params[:id])
+    add_breadcrumb("Entries", entries_path)
+    add_breadcrumb(@entry.question, entry_path(@entry))
   end
 
   # GET /entries/new
@@ -26,6 +30,8 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    add_breadcrumb("Entries", entries_path)
+    add_breadcrumb(@entry.question, edit_entry_path(@entry))
   end
 
   # POST /entries

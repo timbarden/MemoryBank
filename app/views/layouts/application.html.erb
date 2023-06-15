@@ -21,6 +21,7 @@
       <%= render template: "/layouts/header" %>
       <main class="main">
         <div class="content">
+          <%= render template: "/layouts/breadcrumbs" if !homepage %>
           <%= yield %>
         </div>
         <%= render template: "/layouts/sidebar" if !homepage %>

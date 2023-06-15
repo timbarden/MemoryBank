@@ -1,0 +1,9 @@
+<div class="breadcrumbs">
+    <ul>
+        <% @breadcrumbs.each do |crumb| %>
+        <li>
+            <%= link_to crumb.text, crumb.path %>
+        </li>
+        <% end %>
+    </ul>
+</div>

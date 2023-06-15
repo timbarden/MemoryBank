@@ -1,0 +1,30 @@
+.breadcrumbs {
+    font-size: .85rem;
+    color: var(--pri);
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        display: inline;
+        vertical-align: bottom;
+        position: relative;
+        &:not(:last-child):after {
+            content: '\e5c8';
+            opacity: .6;
+            margin: 0 .5em;
+            font-family: 'Material Symbols Outlined';
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48;
+            position: relative;
+            top: .2em;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+}
