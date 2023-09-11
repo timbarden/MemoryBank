@@ -15,15 +15,14 @@
           <% if entry.tags.count > 0
             strEntryTags = raw("<p class='entries__item__tags'>")
             entry.tags.each do |t| %>
-              <% strEntryTags += raw(t.name + '<span>|</span>') %>
+              <% strEntryTags += raw('<span><a href="' + entries_path + '?tag=' + t.name + '" class="">' + t.name + '</a>' + '<span>|</span></span>') %>
             <% end
             strEntryTags += raw("</p>")
           end %>
-          <%= link_to entry do %>
-            <p><%= entry.question %></p>
-            <p class="entries__item__info"><small>last updated by <%= entry.user.name %> on <%= entry.updated_at.strftime("%b %-d, %Y") %></small></p>
-            <%= strEntryTags %>
-          <% end %>
+          <p><%= entry.question %></p>
+          <p class="entries__item__info"><small>last updated by <%= entry.user.name %> on <%= entry.updated_at.strftime("%b %-d, %Y") %></small></p>
+          <%= link_to "", entry, class: "entries__item__link" %>
+          <%= strEntryTags %>
         </li>
       <% end %>
     </ul>

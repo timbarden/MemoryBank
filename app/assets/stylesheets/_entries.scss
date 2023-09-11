@@ -6,12 +6,14 @@
     }
     &__item {
         border-top: 2px solid #333;
+        position: relative;
+        padding: 1.15em 0 .85em;
         &:last-child {
             border-bottom: 2px solid #333;
         }
-        a {
-            display: block;
-            padding: 1em 0;
+        &__link {
+            position: absolute;
+            inset: 0;
             text-decoration: none;
         }
         p {
@@ -27,10 +29,19 @@
             color: var(--pri);
             font-size: 11px;
             margin: 0;
-            span {
-                margin: 0 .5em;
-                opacity: .5;
-                &:last-child {
+            > span {
+                a {
+                    position: relative;
+                    text-decoration: none;
+                    &:hover {
+                        color: #FFF;
+                    }
+                }
+                span {
+                    margin: 0 .5em;
+                    opacity: .5;
+                }
+                &:last-child span {
                     display: none;
                 }
             }

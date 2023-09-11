@@ -8,7 +8,7 @@
         <ul>
             <% entry.tags.each do |tag| %>
                 <li>
-                    <span><%= tag.name %></span>
+                    <a href="<%= entries_path %>?tag=<%= tag.name %>" class=""><%= tag.name %></a>
                 </li>
             <% end %>
         </ul>
