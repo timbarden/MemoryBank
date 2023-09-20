@@ -2,7 +2,7 @@
     <h2><%= entry.question %></h2>
     <p class="entry__subtitle"><small>last updated by <%= entry.user.name %> on <%= entry.updated_at.strftime("%b %-d, %Y") %></small></p>
     <div class="entry__answer">
-        <p><%= entry.answer %></p>
+        <p><%= entry.content %></p>
     </div>
     <div class="tagcloud">
         <ul>
