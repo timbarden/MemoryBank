@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
-  before_action :destroy_unused_tags, only: %i[ destroy ]
+  before_action :destroy_unused_tags, only: %i[ update destroy ]
   before_action :set_breadcrumbs
 
   # GET /entries
