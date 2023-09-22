@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :destroy_unused_tags, only: %i[ destroy ]
   before_action :set_breadcrumbs
 
   # GET /entries
@@ -74,6 +75,14 @@ class EntriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = Entry.find(params[:id])
+    end
+
+    def destroy_unused_tags
+      @entry.taggings.all.find_each do |t|
+        if Tagging.where(tag_id: t.tag_id).count == 1
+          Tag.destroy(t.tag_id)
+        end
+      end
     end
 
     def rebuild_taggings(entry, tags)
