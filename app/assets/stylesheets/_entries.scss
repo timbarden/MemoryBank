@@ -25,6 +25,9 @@
                 }
             }
         }
+        &:hover > p:first-child {
+            color: #FFF;
+        }
         &__tags {
             color: var(--pri);
             font-size: 11px;
