@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
-    <div class="app <% if !homepage %>app--inner<% end %>">
+    <div class="app <% if homepage %>app--home<% else %>app--inner<% end %>">
       <%= render template: "/layouts/adminbar" %>
       <%= render template: "/layouts/header" %>
       <main class="main">
