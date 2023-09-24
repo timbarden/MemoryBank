@@ -27,6 +27,7 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
+    add_breadcrumb("Entries", entries_path)
   end
 
   # GET /entries/1/edit
