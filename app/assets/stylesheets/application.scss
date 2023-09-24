@@ -14,74 +14,34 @@
 *= require_self
 */
 @import "_resets";
+@import "_base";
 
+@import "_actiontext";
 @import "_admin";
 @import "_breadcrumbs";
-@import "_header";
 @import "_entries";
+@import "_forms";
+@import "_header";
 @import "_pagy";
 @import "_tagging";
-@import "actiontext.css";
 
-:root {
-    --pri: #3baf94;
-}
+@import "_home";
 
-* {
-    box-sizing: border-box;
-}
-
-button,
-input {
-    font: inherit;
-    text-transform: inherit;
-    letter-spacing: inherit;
-}
-button,
-input[type="submit"] {
-    cursor: pointer;
-}
-label {
-    display: block;
-}
-input[type="text"],
-textarea {
-    width: 100%;
-    max-width: 600px;
-}
-.form__item {
-    margin: .85em 0;
-    label {
-        margin: .35em 0;
-    }
-    &[data-type="checkbox"]{
-        display: flex;
-        align-items: center;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        input {
-            width: 1.35em;
-            height: 1.35em;
-            cursor: pointer;
-            margin-right: .5em;
-        }
-    }
-}
-.main {
-    padding: 4vw 8vw;
-    min-height: calc(100vh - 5em);
-    background: linear-gradient(#222, rgba(255, 255, 255, .04));
-    &__form {
-        text-align: center;
-    }
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .app--inner {
     .main {
         background: rgba(255, 255, 255, .04);
     }
 }
-.content {
 
+.main {
+    flex: auto;
+    padding: 4vw 8vw;
+    background: linear-gradient(#222, rgba(255, 255, 255, .04));
 }
 .sidebar {
     background: #222;
@@ -109,49 +69,4 @@ textarea {
             margin-top: 0;
         }
     }
-}
- 
-///////////////////////
-// APP / BODY
-///////////////////////
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    min-height: 100vh;
-    background: #222;
-    font-family: "Nunito", sans-serif;
-    color: #d4d4d4;
-    font-size: 1.125em;
-    line-height: 1.5;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Gugi', sans-serif;
-    font-weight: 400;
-    color: #FFF;
-    margin: 0;
-    letter-spacing: .05em;
-}
-h1 {
-    font-size: 2.25em;
-}
-hr {
-    border: none;
-    border-top: 2px solid #333;
-}
-a {
-    color: inherit;
-    text-decoration-style: dotted;
-    &:hover {
-        color: #FFF;
-    }
-}
-
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
-    color: var(--pri);
 }

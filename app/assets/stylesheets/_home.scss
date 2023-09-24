@@ -1,0 +1,41 @@
+.app--home {
+    .main__form {
+        text-align: center;
+        form {
+            max-width: 25em;
+            margin: .5em auto 1em;
+            display: flex;
+            justify-content: center;
+        }
+        input, button {
+            outline: none;
+            border: none;
+            vertical-align: bottom;
+        }
+        input {
+            padding: .85em 1.35em;
+            background: rgba(#000, .35);
+            color: var(--pri);
+            border-radius: .5em 0 0 .5em;
+            min-width: calc(100% - 3.75rem);
+            min-height: 3.75rem;
+        }
+        button {
+            background: var(--pri);
+            color: #222;
+            width: 3.75rem;
+            height: 3.75rem;
+            border-radius: 0 .5em .5em 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            span {
+                font-size: 1.85em;
+            }
+        }
+        a {
+            color: var(--pri);
+        }
+    }
+}
